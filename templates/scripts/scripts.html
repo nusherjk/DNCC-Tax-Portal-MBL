@@ -1,0 +1,27 @@
+
+{% load static %}
+<script>
+  $(document).ready(function() {
+    // $("#exampleModal").modal();
+  
+
+const myModal = document.getElementById('exampleModal')
+const myInput = document.getElementById('exampleModal')
+
+myModal.addEventListener('shown.bs.modal', () => {
+  myInput.focus()
+})
+});
+
+function modalupdate(){
+$("#modal-tax-no").text($('#taxno').val());
+  $("#modal-qtr").text($('#qtr').val());
+  
+  $("#modal-mobile-no").text($('#payermobileno').val());
+  
+  
+  
+
+}
+
+</script>

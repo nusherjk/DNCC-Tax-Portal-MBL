@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block content%}
+
+        <!-- <h1>Data Verification</h1>
+        
+     
+
+        <form action="./verified" method="POST">
+            {% csrf_token %}
+            <label for="userid">USERID:</label><br>
+            <input type="text" id="userid" name="userid" value="50154800"><br>
+            <label for="policynum">POLICY NUMBER:</label><br>
+            <input type="text" id="policynum" name="policynum" value="0000060935"><br><br>
+            <input type="submit" value="Submit">
+          </form> -->
+
+
+
+      
+        <div class="col-lg-10 grid-margin stretch-card" style="margin: 30px auto;">
+
+    
+          <div class="card ">
+            
+            
+            <div class="card-body">
+              <h4 class="card-title">Transaction info</h4>
+              <!-- <p class="card-description">
+                Add class <code>.table-striped</code>
+              </p> -->
+              <!-- <div class="{{ classes }}" role="alert" id="mess">
+                <a href="#" onclick="closess()">×</a>
+                <strong>{{message}}</strong> 
+                <script>
+                  function closess(){
+                    
+                    $('#mess').hide();
+                  }
+                  
+                </script>
+              </div> -->
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        Transaction ID
+                      </th>
+                      <th>
+                        {{txn.txn_id}}
+                      </th>
+                
+                  </thead>
+                  <tbody>
+
+                          <tr>
+                              <td>Transaction ID</td>
+                              <td>{{txn.txnId}}</td>
+                       
+                          </tr>
+                          <tr>
+                              <td>Tax No</td>
+                              <td>{{txn.tax_no}}</td>
+                       
+                          </tr>
+                          <tr>
+                              <td>Quarter</td>
+                              <td>{{txn.qtr}}</td>
+                       
+                          </tr>
+
+                          <tr>
+                            <td>Name</td>
+                            <td>{{txn.name}}</td>
+                          </tr>
+                          <tr>
+                            <td>Amount</td>
+                            <td>{{txn.amount}}</td>
+                          </tr>
+                          <tr>
+                            <td>Address</td>
+                            <td>{{txn.address}}</td>
+                          </tr>
+                          <tr>
+                            <td>Mobile Number</td>
+                            <td>{{txn.payermobile_no}}</td>
+                          </tr>
+                          <tr>
+                            <td>Date</td>
+                            <td>{{txn.txn_date}}</td>
+                          </tr>
+                          <tr>
+                            <td>Status</td>
+                            <td>
+                              {%  if txn.status == True %}
+                              
+                              <i class="mdi mdi-check-circle menu-icon text-success"></i> Payment Complete
+                              {% else %}
+                              <i class="mdi mdi-close-circle menu-icon text-danger"></i> Payment Incomplete
+                              {% endif %}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Submitted By</td>
+                            <td>{{txn.input_user.email}}</td>
+                          </tr>
+                          <tr>
+                            <td>Branch</td>
+                            <td>{{txn.branch.branch_name}}</td>
+                          </tr>
+                          <!-- <tr>
+                            <td>Row No.</td>
+                            <td>{{txn.rowNo}}</td>
+                          </tr> -->
+                            {% if txn.status == False  %}
+                          <tr>
+                            <td>
+                              <!-- <form method="GET" action=""> -->
+                                <!-- <input type="hidden" value="{{txn.txnId}}"> -->
+                                <button type="button"   class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal">
+                                  Provided Information is Correct, Confirm Payment.
+                                </button>
+                              <!-- </form> -->
+                            </td>
+                          </tr>
+                          {% endif %}
+              
+
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+       
+          </div>
+        </div>
+        
+          <!-- MODAL -->
+          
+        
+    
+ {% endblock content %}

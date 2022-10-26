@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content%}
+
+        <!-- <h1>Data Verification</h1>
+        
+     
+
+        <form action="./verified" method="POST">
+            {% csrf_token %}
+            <label for="userid">USERID:</label><br>
+            <input type="text" id="userid" name="userid" value="50154800"><br>
+            <label for="policynum">POLICY NUMBER:</label><br>
+            <input type="text" id="policynum" name="policynum" value="0000060935"><br><br>
+            <input type="submit" value="Submit">
+          </form> -->
+
+
+
+          <div class="col-md-10 grid-margin stretch-card" style="margin: 30px auto;width:600px">
+            <div class="card" >
+              <div class="card-body">
+                <h4 class="card-title">Enter Tax Informations</h4>
+               
+                        <p class="card-description">
+                          {% if messages %}
+                          <ul class="messages">
+                              {% for message in messages %}
+                              <li {% if message.tags %} class="alert  {{ message.tags }} alert-dismissable"{% endif %}>{{ message }}</li>
+                              {% endfor %}
+                          </ul>
+                          {% endif %}
+                          
+
+                        </p>
+               
+                <form class="forms-sample"  action="{% url 'taxValidation' %}" method="POST" onkeydown="return event.key != 'Enter';" >
+                  {% csrf_token %}
+                  <div class="row">
+                    <div class="form-group col-md-12">
+                      <label for="taxno">Tax Number</label>
+                      <input type="text" class="form-control" id="taxno" name="taxno"  placeholder="TAX number" required>
+                    </div>
+                    
+
+
+                  </div>
+                  <div class="row">
+
+                    <div class="form-group col-md-12">
+                      <label for="qtr">Quarter</label>
+                      <select class="js-example-basic-single w-100" name="qtr" id="qtr">
+
+                        
+                        <option value="1">Quarter 1(JAN-MAR)</option>
+                        <option value="2">Quarter 2(APR-JUN)</option>
+                        <option value="3">Quarter 3(JUL-SEP)</option>
+                        <option value="4">Quarter 4(OCT-DEC)</option>
+                        
+                   
+                      </select>
+                    </div>
+                    
+                    <!-- <div class="form-group col-md-6"> -->
+                      <!-- <label for="msg">Remarks</label> -->
+                      <!-- <input type="text" class="form-control" id="msg" name="msg" placeholder="Remarks(Optional)" style="margin: 10px 0px;" > -->
+                      <!-- </div> -->
+                      
+                      
+                      
+                    </div>
+                    
+                    <div class="row">
+                      <div class="form-group col-md-12">
+                        <label for="payermobileno">Contact No.</label>
+                          <input type="text" class="form-control" id="payermobileno" name="payermobileno" placeholder="Payer Mobile No." style="margin: 10px 0px;" >
+                          <!-- <input type="text" class="form-control" id="lll" placeholder="Payfor" style="margin:10px 0px;" required> -->
+                      </div>
+
+                    </div>
+          
+                    <div style="display: flex; flex-direction: row-reverse;" >
+                  <button type="button"  onclick="modalupdate()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                    Next
+                  </button>
+                  <!-- <button type="submit" class="btn btn-primary me-2" style="margin: 0px 5px;">Next</button> -->
+                  <!-- <button class="btn btn-danger" style="margin: 0px 5px;">Cancel</button> -->
+                  {% include 'modals/cfmSubmission.html' %}
+                </div>
+              </form>
+              </div>
+            </div>
+            
+            
+          </div>
+
+          <!-- MODAL -->
+          
+        
+    
+ {% endblock content %}
