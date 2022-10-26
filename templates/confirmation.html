@@ -113,24 +113,28 @@
                             <td>Row No.</td>
                             <td>{{txn.rowNo}}</td>
                           </tr> -->
-                            {% if txn.status == False  %}
-                          <tr>
-                            <td>
-                              <!-- <form method="GET" action=""> -->
-                                <!-- <input type="hidden" value="{{txn.txnId}}"> -->
-                                <button type="button"   class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal">
-                                  Provided Information is Correct, Confirm Payment.
-                                </button>
-                              <!-- </form> -->
-                            </td>
-                          </tr>
-                          {% endif %}
+                           
               
 
 
                   </tbody>
                 </table>
               </div>
+
+              {% if txn.status == False  %}
+              <div style="display: flex; flex-direction: row-reverse;justify-content: space-around; padding: 15px;">
+                
+             
+                  <form method="GET" action="{% url 'submitTax' txn.txnId  %}">
+                    <!-- <input type="hidden" value="{{txn.txnId}}"> -->
+                    <button type="submit"   class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal">
+                      Provided Information is Correct, Confirm Payment.
+                    </button>
+                  </form>
+                
+                  </div>
+              {% endif %}
+
             </div>
        
           </div>

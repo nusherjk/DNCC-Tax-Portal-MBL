@@ -48,7 +48,7 @@ def index(request):
 
 def taxValidation(request):
 
-    
+    context ={}
   
     if "User_Email" in request.session :
         if(request.method == 'GET'):
@@ -85,10 +85,16 @@ def taxValidation(request):
 
             if(resp[1]=='Invalid Details / Amount'):
                 messages.error(request,"Invalid Details provided please check and submit again. ")
+
+                context["message"] = "Please enter a date in order for searching."
+                context['classes'] = 'alert alert-danger alert-dismissable'
                 return redirect('landing')
 
             elif(resp[1]=='Already Paid'):
                 messages.info(request,  "Payment Complete already. " ) 
+
+                context["message"] = "Please enter a date in order for searching."
+                context['classes'] = 'alert alert-danger alert-dismissable'
                 return redirect('landing')
 
             else:
@@ -97,6 +103,7 @@ def taxValidation(request):
                     try:
                         newtxn = Transaction.objects.get(tax_no =data1["taxno"], qtr=data1["qtr"] )
                         user = User.objects.get(email=request.session["User_Email"])
+                        newtxn.rowNo = resp[7]
                         newtxn.input_user= user
                         newtxn.branch = user.branchname
                         newtxn.save()

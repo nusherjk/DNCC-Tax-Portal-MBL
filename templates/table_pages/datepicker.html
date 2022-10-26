@@ -135,7 +135,12 @@
                                 {% else %}
                                 <i class="mdi mdi-close-circle menu-icon text-danger"></i>
                                 {% endif %}</td>
-                                <td>{{txn.txnId}}</td>
+                                <td>
+
+                                  <a href="{% url 'confirmation' txn.txnId  %}">
+                                    {{txn.txnId}}
+                                  </a>
+                                </td>
                                 <td>{{txn.tax_no}}</td>
                                 <td>
                               
@@ -143,7 +148,7 @@
                                  </td>
                                 <td>{{txn.payermobile_no}}</td>
                                 <td>{{txn.txn_date}}</td>
-                                
+                                 
                                   <td>{{txn.branch.branch_name}}</td>
                             </tr>
                         {% endfor %}
