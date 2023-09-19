@@ -9,7 +9,7 @@ def getUser(usermail):
     return context
 
 def ldapcheck(username, password):
-    servername= 'LDAP://10.10.100.12:389'
+    servername= 'LDAP://###############################'
     server = Server(servername, get_info=ALL)  # define an unsecure LDAP server, requesting info on DSE and schema
 
     # define the connection
