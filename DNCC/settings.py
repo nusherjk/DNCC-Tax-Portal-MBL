@@ -41,7 +41,7 @@ SECRET_KEY = env('SECRET_KEY')
 #DEBUG = True
 DEBUG =env('DEBUG')
 
-ALLOWED_HOSTS = ['127.0.0.1','127.0.0.2', 'localhost','10.99.99.201']
+ALLOWED_HOSTS = ['127.0.0.1','127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -93,20 +93,15 @@ WSGI_APPLICATION = 'DNCC.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+
 
 DATABASES = {
     "default": {
-        "ENGINE":"mssql", #env('ENGINE'),
-        "NAME": "db_DNCC", #env('DB_NAME'),#"db_CharLife",db_DNCC
-        "USER": "nusher", #env('DB_USER'),#"borson_new",
-        "PASSWORD": "1234", #env('DB_PASSWORD'), 
-        "HOST": "(LocalDb)\MSSQLLocalDB",
+        "ENGINE":env('ENGINE'),
+        "NAME": env('DB_NAME'),
+        "USER": env('DB_USER'),
+        "PASSWORD": env('DB_PASSWORD'), 
+        "HOST": env('DB_HOST'),
         "PORT": "",
         "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server", 
         },
